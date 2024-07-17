@@ -44,11 +44,9 @@ def step_impl(context):
         assert(context.resp.status_code == HTTP_204_NO_CONTENT)
 
     #
-
+    # load the database with new products
     #
     for row in context.table:
-        #
-        for row in context.table:
         payload = {
             "name": row['name'],
             "description": row['description'],
@@ -58,4 +56,3 @@ def step_impl(context):
         }
         context.resp = requests.post(rest_endpoint, json=payload)
         assert context.resp.status_code == HTTP_201_CREATED
-        #
